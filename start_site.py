@@ -2,6 +2,7 @@ from flask import Flask, request, session
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'VERY_SECRET_KEY'
 x = ['test', 'test']
+x_email = "your_email"
 head = '''
 <!DOCTYPE html>
 <html lang="en">
@@ -31,7 +32,7 @@ function copyemail() {
 body = f'''
 </head>
     <body>
-        <input type="text" value="maksproo22@gmail.com" id="email">
+        <input type="text" value="{x_email}" id="email">
         <button onclick="copyemail()">Скопировать текст</button>
         <br>
         <input type="text" value="{x[0]}" id="login">
@@ -71,7 +72,7 @@ def list():
         return head + f'''
 </head>
     <body>
-        <input type="text" value="maksproo22@gmail.com" id="email">
+        <input type="text" value="{x_email}" id="email">
         <button onclick="copyemail()">Скопировать текст</button>
         <br>
         <input type="text" value="{x[0]}" id="login">
