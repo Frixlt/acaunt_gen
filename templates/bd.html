@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8"/>
+    <title>Data_List</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+<script>
+function copylogin() {
+  var copyText = document.getElementById("login");
+  copyText.select();
+  copyText.setSelectionRange(0, 99999)
+  document.execCommand("copy");
+}
+function copypassword() {
+  var copyText = document.getElementById("password");
+  copyText.select();
+  copyText.setSelectionRange(0, 99999)
+  document.execCommand("copy");
+}
+function copyemail() {
+  var copyText = document.getElementById("email");
+  copyText.select();
+  copyText.setSelectionRange(0, 99999)
+  document.execCommand("copy");
+}
+</script>
+<style>
+   body {
+    background-image: url(static/fon.jpg); /* Путь к фоновому изображению */
+    background-color: #c7b39b; /* Цвет фона */
+   }
+</style>
+</head>
+    <body>
+        <input type="text" value="{{email}}" id="email">
+        <button onclick="copyemail()">Скопировать текст</button>
+        <br>
+        <input type="text" value="{{l_a_p[0]}}" id="login">
+        <button onclick="copylogin()">Скопировать текст</button>
+        <br>
+        <input type="text" value="{{l_a_p[1]}}" id="password">
+        <button onclick="copypassword()">Скопировать текст</button>
+        <form method="post">
+            <button type="submit" class="registerbtn">следующая страница</button>
+        </form>
+    </body>
+</html>
