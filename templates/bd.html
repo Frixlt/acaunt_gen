@@ -5,43 +5,46 @@
     <title>Data_List</title>
     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
 <script>
-function copylogin() {
-  var copyText = document.getElementById("login");
-  copyText.select();
-  copyText.setSelectionRange(0, 99999)
-  document.execCommand("copy");
-}
-function copypassword() {
-  var copyText = document.getElementById("password");
-  copyText.select();
-  copyText.setSelectionRange(0, 99999)
-  document.execCommand("copy");
-}
-function copyemail() {
-  var copyText = document.getElementById("email");
-  copyText.select();
-  copyText.setSelectionRange(0, 99999)
-  document.execCommand("copy");
+let x_email = '{{email}}'
+let login = '{{log}}'
+let password = '{{pas}}'
+function copy(text){
+    var copytext=document.createElement('input')
+    copytext.value=text
+    document.body.appendChild(copytext)
+    copytext.select()
+    document.execCommand('copy')
+    document.body.removeChild(copytext)
 }
 </script>
 <style>
-   body {
-    background-image: url(static/fon.jpg); /* Путь к фоновому изображению */
-    background-color: #c7b39b; /* Цвет фона */
-   }
+  body {background-image: url(static/body.jpg);
+    background-color: #c7b39b;}
+  .c_button{display: inline-block;
+    cursor: pointer; 
+    font-size:15px;
+    text-decoration:none;
+    padding:3px 10px; 
+    color:#ff0000;
+    background:#000000;
+    border-radius:20px;
+    border:1px solid #000000;}
+  .c_button:hover{background:#f5f5f5;
+    color:#2fff00;
+    border:1px solid #000000;
+    transition: all 1s ease;}
 </style>
 </head>
-    <body>
-        <input type="text" value="{{email}}" id="email">
-        <button onclick="copyemail()">Скопировать текст</button>
-        <br>
-        <input type="text" value="{{l_a_p[0]}}" id="login">
-        <button onclick="copylogin()">Скопировать текст</button>
-        <br>
-        <input type="text" value="{{l_a_p[1]}}" id="password">
-        <button onclick="copypassword()">Скопировать текст</button>
-        <form method="post">
-            <button type="submit" class="registerbtn">следующая страница</button>
-        </form>
+    <body onunload="return unload_body();">
+      <p style="text-align: center;">
+        <button class="c_button" onclick="copy(x_email)">email:{{email}}</button>
+        <br/>
+        <button class="c_button" onclick="copy(login)">Логин:{{log}}</button>
+        <br/>
+        <button class="c_button" onclick="copy(password)">Пароль:{{pas}}</button>
+      </p>
+      <form method="post">
+        <button class="c_button" type="submit" >следующая страница</button>
+      </form>
     </body>
 </html>

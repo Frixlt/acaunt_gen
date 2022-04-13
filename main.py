@@ -1,4 +1,3 @@
-import random
 from my_function import pas
 with open('a_gen.txt', 'r') as file:
 	lost=int(file.readlines()[0])
