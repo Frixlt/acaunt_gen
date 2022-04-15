@@ -4,9 +4,9 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = 'VERY_SECRET_KEY'
 
 email = "your_email" # Ваша почта, будет отображаться на сайте к каждому акаунту
-online = True #открыть сервер для сети? (True/False)
+online = False #открыть сервер для сети? (True/False)
 
-@app.route('/', methods=['POST', 'GET'])
+@app.route('/')
 def start():
     session['page'] = 0 #установление значения страницы для нового пользователя
     session['log_and_pas']=['test_login','test_password'] #установление значения последнего логина и пароля с последующим выводом пользователю
@@ -22,10 +22,8 @@ def list():
         	session['log_and_pas']=file.readlines()[session['page']][:-1].split(":")
     return render_template('bd.html',email=email, log=(session.get('log_and_pas'))[0], pas=(session.get('log_and_pas'))[1])
 
-@app.route('/end', methods=['POST', 'GET'])
+@app.route('/end')
 def end():
-	if request.method == 'POST':
-		return render_template('redirect.html',link = "/")
 	return render_template('end.html')
 
 if __name__ == "__main__":
