@@ -26,6 +26,11 @@ def list():
 def end():
 	return render_template('end.html')
 
+@app.route('/window')
+def window():
+	return render_template('window.html')
+
 if __name__ == "__main__":
     max_leng = max('a_gen.txt')
+    print("открыть в маленьком окне: /window")
     app.run(host='0.0.0.0',port=5000) if online else app.run()
